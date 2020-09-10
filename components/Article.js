@@ -111,6 +111,7 @@ const data = [
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
 
+
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
@@ -145,12 +146,30 @@ function articleMaker(articleObj){
   mySpan.textContent = '+';
   myDiv.appendChild(mySpan);
 
+  mySpan.addEventListener('click',()=>{
+    myDiv.classList.toggle("article-open");
+  })
 
   return articles.appendChild(myDiv);
 }
 
-articleMaker(data[0]);
-articleMaker(data[1]);
-articleMaker(data[2]);
-articleMaker(data[3]);
-articleMaker(data[4]);
+
+
+let newArticle = {
+  title: 'Ozzy is a gangsta',
+  date: 'September 9, 2020',
+  firstParagraph: `RICK ROSS THE BOSS MIA`,
+
+  secondParagraph: `MIAMI HEAT IN THE EASTERN CONFERENCE FINALS`,
+
+  thirdParagraph: `Tyler Herro Baby Goat`
+}
+
+
+data.push(newArticle);
+
+data.forEach(item =>{
+  articleMaker(item)
+})
+
+
